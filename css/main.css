@@ -130,7 +130,6 @@ button.signin:hover {
 
 .modal {
     display:none;
-    /*opacity: 0;*/
     position: fixed;
     top: 0;
     left: 0;
@@ -143,9 +142,15 @@ button.signin:hover {
       to { opacity: 1; }
 }
 
+@keyframes fadeOut {
+    from { opacity: 1; }
+      to { opacity: 0;
+            display: none;}
+}
+
 .fadeIn {
 
-  
+
     animation: fadeIn 1s;
     position: fixed;
     top: 0;
@@ -155,6 +160,17 @@ button.signin:hover {
     background-color: rgba(30,30,30,0.8);
 
 
+}
+
+.fadeOut {
+  animation: fadeOut 1s;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,0.8);
 }
 
 .getstarted {
