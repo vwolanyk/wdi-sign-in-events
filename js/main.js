@@ -2,17 +2,40 @@ document.addEventListener('DOMContentLoaded', function(){
 
 var signIn = document.querySelector("button.signin");
 var modal = document.querySelector('div.modal');
-var closeButton = document.querySelector('button.close')
+var closeButton = document.querySelector('button.close');
+var submitButton = document.querySelector('button.submit');
+var inputs = document.querySelectorAll('input');
+var form = document.querySelector('form')
+// Fade In When Sign In Clicked
 signIn.addEventListener('click',function(){ console.log("sign In Clicked")
 
 modal.className = "fadeIn";
 });
 
+// Fade Out When Modal Clicked
 closeButton.addEventListener('click',function(){
   console.log("close clicked");
   modal.classList.remove("fadeIn")
   modal.classList.add("fadeOut")
-  setTimeout(function(){modal.className = "modal";},1000);
+  setTimeout(function(){modal.className = "modal"; form.reset(); inputs.forEach(function(input){input.classList.remove("error")})},1000);
 });
+
+// Errors Appear When Submit Clicked
+submitButton.addEventListener('click', function(e){
+  e.stopPropagation;
+
+  inputs.forEach(function(input){
+    if (input.value == ""){
+        input.classList.add("error");
+        input.addEventListener('click', function(e){
+          e.stopPropagation
+           input.classList.remove("error");});
+      };
+    });
+
+});
+
+
+
 
 });
