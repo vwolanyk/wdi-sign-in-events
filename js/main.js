@@ -12,23 +12,23 @@ signIn.addEventListener('click',function(){ console.log("sign In Clicked")
 modal.className = "fadeIn";
 });
 
-// Fade Out When Modal Clicked
-closeButton.addEventListener('click',function(){
+// Fade Out When Modal Clicked, form reset, errors removed
+modal.addEventListener('click',function(){
   console.log("close clicked");
   modal.classList.remove("fadeIn")
   modal.classList.add("fadeOut")
   setTimeout(function(){modal.className = "modal"; form.reset(); inputs.forEach(function(input){input.classList.remove("error")})},1000);
 });
 
-// Errors Appear When Submit Clicked
+// Errors Appear When Submit Clicked if no values in fields, errors removed when field clicked
 submitButton.addEventListener('click', function(e){
-  e.stopPropagation;
+  e.stopPropagation();
 
   inputs.forEach(function(input){
     if (input.value == ""){
         input.classList.add("error");
         input.addEventListener('click', function(e){
-          e.stopPropagation
+          e.stopPropagation();
            input.classList.remove("error");});
       };
     });
