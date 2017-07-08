@@ -17,7 +17,17 @@ modal.addEventListener('click',function(){
   console.log("close clicked");
   modal.classList.remove("fadeIn")
   modal.classList.add("fadeOut")
-  setTimeout(function(){modal.className = "modal"; form.reset(); inputs.forEach(function(input){input.classList.remove("error")})},1000);
+  setTimeout(function(){modal.className = "modal"; form.reset(); inputs.forEach(function(input){input.classList.remove("error")})},800);
+});
+
+// INPUT Fields add even listener
+
+inputs.forEach(function(input){
+  input.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (input.classList.contains("error")){input.classList.remove("error");}
+     });
+
 });
 
 // Errors Appear When Submit Clicked if no values in fields, errors removed when field clicked
@@ -27,9 +37,6 @@ submitButton.addEventListener('click', function(e){
   inputs.forEach(function(input){
     if (input.value == ""){
         input.classList.add("error");
-        input.addEventListener('click', function(e){
-          e.stopPropagation();
-           input.classList.remove("error");});
       };
     });
 
